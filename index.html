@@ -1,92 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-<form>
-<h2>Kitchen store</h2>
-<select id="select">Select Product
-<option>Spoon</option>
-<option>Dish</option>
-<option>Bowl</option>
-</select>
-<label>Enter Quantity</label>
-<input type="text" id="qty">
-<label>Total Price</label>
-<input type="text" id="total">
-<input type = "button" value="Sumit" onclick="submitTotal()">
-<!--submit is button-->
+    <form>
+        <h2>Kitchen store</h2>
+        <select id="select">Select Product
+            <option>spoon</option>
+            <option>dish</option>
+            <option>bowl</option>
+        </select>
+        <label>Enter Quantity</label>
+        <input type="text" id="qty">
+        <label>Total Price</label>
+        <input type="text" id="total">
+        <input type="button" value="Sumit" onclick="submitTotal()">
+        <!--submit is button-->
 
-</form>
-
-
+    </form>
 
 
 
-   
- <script>
-function product(){
-this.type = "";
-this.instock = 0;
-this.price = 0;
-this.productID = "";
+    <script>
+        function product() {
+            this.type = "";
+            this.instock = 0;
+            this.price = 0;
+            this.productID = "";
 
-}
-var productArray = new Array()//create array--mean a group of--crate only one
-//create a group object --productone is object
-var productOne = new product()
-productOne.type = "spoon";
-productOne.instock = 10;
-productOne.price = 5;
-productOne.productID = 123;
-// now below we need to add product above to array ---use push
-productArray.push(productOne)
+        }
+        var productArray = new Array()//create array--mean a group of--crate only one
+        //create a group object --productone is object
+        var productOne = new product()
+        productOne.type = "spoon";
+        productOne.instock = 10;
+        productOne.price = 5;
+        productOne.productID = 123;
+        // now below we need to add product above to array ---use push
+        productArray.push(productOne)
 
-//next product
+        //next product
 
-//create a group object --productone is object
-var productTwo = new product()
-productTwo.type = "dish";
-productTwo.instock = 20;
-productTwo.price = 10;
-productTwo.productID = 234;
-// now below we need to add product above to array ---use push
-productArray.push(productTwo)
-
-
-//next peoduct
-//create a group object --productone is object
-var productThree = new product()
-productThree.type = "bowl";
-productThree.instock = 20;
-productThree.price = 8;
-productThree.productID = 456;
-// now below we need to add product above to array ---use push
-productArray.push(productThree)
-
-//done with array
-
-//next step calculate price--we crate new function
-
-function submitTotal(){
-    var type = document.getElementById("select").value// have to tell what type on drop down menu
-    for (i=0; i<productArray.length; i++){
-        if (type==productArray[i].type)
-    }
-}
+        //create a group object --productone is object
+        var productTwo = new product()
+        productTwo.type = "dish";
+        productTwo.instock = 20;
+        productTwo.price = 10;
+        productTwo.productID = 234;
+        // now below we need to add product above to array ---use push
+        productArray.push(productTwo)
 
 
+        //next peoduct
+        //create a group object --productone is object
+        var productThree = new product()
+        productThree.type = "bowl";
+        productThree.instock = 20;
+        productThree.price = 8;
+        productThree.productID = 456;
+        // now below we need to add product above to array ---use push
+        productArray.push(productThree)
+
+        //done with array
+
+        //next step calculate price--we crate new function
+
+        function submitTotal() {
+            var type = document.getElementById("select").value// have to tell what type on drop down menu
+         
+            for (i = 0; i < productArray.length; i++) {
+                if (type == productArray[i].type) {
+                 
+                    var price = productArray[i].price
+                    var qty = productArray[i].instock
+
+                    //check if quantity is available--qty check if available in stock--checkQty is what qty customer order
+                    var checkQty = parseInt(document.getElementById("qty").value)
+                    if (qty >= checkQty) {
+                        //total box
+                        var finalTotal = checkQty * price
+                        document.getElementById("total").value = finalTotal
+                    }
+                    break
 
 
 
 
- </script>   
+
+
+                }
+            }
+        }
+
+
+
+
+
+
+    </script>
 
 
 
 </body>
+
 </html>
